@@ -16,6 +16,7 @@ class ProfileScreen extends StatelessWidget {
 
           ),
         ),
+        MediaQuery.of(context).orientation == Orientation.portrait?
         Padding(
           padding: const EdgeInsets.all(15.0),
           child: Column(
@@ -102,6 +103,12 @@ class ProfileScreen extends StatelessWidget {
             ],
           ),
         )
+            :
+        Container(
+              width: 200,
+              height: 200,
+              color: Colors.black,
+            )
       ],
     );
   }
