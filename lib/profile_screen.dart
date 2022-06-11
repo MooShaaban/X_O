@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({Key? key}) : super(key: key);
+   ProfileScreen({Key? key}) : super(key: key);
+
+  void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +96,7 @@ class ProfileScreen extends StatelessWidget {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
-                    itemBuilder: (context, index)=> profileInfo(index),
+                    itemBuilder: (context, index)=> profileInfo(index, context),
                     separatorBuilder: (context, index)=> SizedBox(width: 20.0,),
                     itemCount: 2
                 ),
@@ -107,13 +109,13 @@ class ProfileScreen extends StatelessWidget {
         Container(
               width: 200,
               height: 200,
-              color: Colors.black,
+              color: Colors.white,
             )
       ],
     );
   }
 
-  Widget profileInfo (int index) {
+  Widget profileInfo (int index, context) {
     List <Widget> A = [
       Material(
         borderRadius: BorderRadiusDirectional.circular(25.0),
@@ -186,7 +188,26 @@ class ProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: 28.0,),
               MaterialButton(
-                onPressed: (){},
+                onPressed: (){
+                  showModalBottomSheet(context: context,
+                      builder: (context)=> Container(
+                        padding: EdgeInsetsDirectional.all(13.0),
+                        color: Colors.white,
+
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              buildItem(),
+                              buildItem(),
+                              buildItem(),
+                              buildItem(),
+                              buildItem(),
+                            ],
+                          ),
+                        ),
+
+                      ));
+                },
                 elevation: 5.0,
                 child: Container(
                   width: 250.0,
@@ -320,4 +341,65 @@ class ProfileScreen extends StatelessWidget {
     ];
     return A[index];
   }
+
+   Widget buildItem () {
+     return Padding(
+       padding: const EdgeInsets.all(10.0),
+       child: Material(
+         elevation: 10,
+         color: Colors.transparent,
+         child: Container(
+           clipBehavior: Clip.antiAliasWithSaveLayer,
+           decoration: BoxDecoration(
+             borderRadius: BorderRadius.circular(15.0),
+             color: Colors.white,
+           ),
+           child: Row(
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+               Image(
+                 image: AssetImage('assets/images/Bin1.png'),
+                 width: 110.0,
+                 height: 110.0,
+                 fit: BoxFit.contain,
+               ),
+               Column(
+                 crossAxisAlignment: CrossAxisAlignment.start,
+                 children: [
+                   SizedBox(height: 5.0,),
+                   Text(
+                     'Bin Description',
+                     style: TextStyle(
+                       fontSize: 17.0,
+                       fontWeight: FontWeight.bold,
+                     ),
+                   ),
+                   SizedBox(height: 15.0,),
+                   Text('02:54 PM'),
+                   SizedBox(height: 10.0,),
+                   // Container(
+                   //   width: 220.0,
+                   //   child: RoundedProgressBar(
+                   //     percent: 70.0,
+                   //     height: 22.0,
+                   //     style: RoundedProgressBarStyle(
+                   //         colorProgress: Colors.teal,
+                   //         colorProgressDark: Colors.teal.shade600,
+                   //         backgroundProgress: Colors.teal.shade100
+                   //
+                   //
+                   //     ),
+                   //   ),
+                   // ),
+
+                 ],
+               )
+             ],
+           ),
+         ),
+       ),
+     );
+   }
+
+
 }
