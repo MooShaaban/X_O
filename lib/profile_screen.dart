@@ -195,6 +195,7 @@ class ProfileScreen extends StatelessWidget {
                         color: Colors.white,
 
                         child: SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
                           child: Column(
                             children: [
                               buildItem(),
@@ -368,15 +369,16 @@ class ProfileScreen extends StatelessWidget {
                  children: [
                    SizedBox(height: 5.0,),
                    Text(
-                     'Bin Description',
+                     'Bin ID',
                      style: TextStyle(
                        fontSize: 17.0,
                        fontWeight: FontWeight.bold,
                      ),
                    ),
                    SizedBox(height: 15.0,),
-                   Text('02:54 PM'),
+                   Text('21/5/2022, 02:54 PM'),
                    SizedBox(height: 10.0,),
+                   Text('Location: 15485, 45645'),
                    // Container(
                    //   width: 220.0,
                    //   child: RoundedProgressBar(
