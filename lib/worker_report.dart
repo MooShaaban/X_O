@@ -4,9 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 class WorkerReport extends StatelessWidget {
 
 
-
   var workerProblemController = TextEditingController();
-
 
 
   @override
@@ -29,7 +27,8 @@ class WorkerReport extends StatelessWidget {
             children: [
 
 
-              Center(child: Image.asset('assets/images/error.gif',width: 180.0,height: 180.0,)),
+              Center(child: Image.asset(
+                'assets/images/error.gif', width: 180.0, height: 180.0,)),
               SizedBox(height: 10.0,),
               Text('What\'s Wrong ?',
                 style: GoogleFonts.yanoneKaffeesatz(
@@ -66,7 +65,7 @@ class WorkerReport extends StatelessWidget {
                   ),
                   child: MaterialButton(
                     clipBehavior: Clip.antiAliasWithSaveLayer,
-                    onPressed: (){
+                    onPressed: () {
                       print(workerProblemController.text);
                     },
                     child: Center(
@@ -89,66 +88,6 @@ class WorkerReport extends StatelessWidget {
       ),
     );
   }
-
-
-
-  Widget buildItem () {
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Material(
-        elevation: 10,
-        color: Colors.transparent,
-        child: Container(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(15.0),
-            color: Colors.white,
-          ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image(
-                image: AssetImage('assets/images/Bin1.png'),
-                width: 110.0,
-                height: 110.0,
-                fit: BoxFit.contain,
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 5.0,),
-                  Text(
-                    'Bin ID',
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 15.0,),
-                  Text('21/5/2022, 02:54 PM'),
-                  SizedBox(height: 10.0,),
-                  Text('Location: 15485, 45645'),
-                  // Container(
-                  //   width: 220.0,
-                  //   child: RoundedProgressBar(
-                  //     percent: 70.0,
-                  //     height: 22.0,
-                  //     style: RoundedProgressBarStyle(
-                  //         colorProgress: Colors.teal,
-                  //         colorProgressDark: Colors.teal.shade600,
-                  //         backgroundProgress: Colors.teal.shade100
-                  //
-                  //
-                  //     ),
-                  //   ),
-                  // ),
-
-                ],
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
+
+
